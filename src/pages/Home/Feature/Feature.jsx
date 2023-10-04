@@ -29,7 +29,7 @@ const Feature = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className=" border-b-4 border-x-2 p-3 rounded-md shadow-md uppercase hover:border-blue-500 w-4/12">
+            <button className="border-b-4 border-x-2 p-3 rounded-md shadow-md uppercase hover:border-blue-500 w-4/12">
               Read More
             </button>
           </div>
