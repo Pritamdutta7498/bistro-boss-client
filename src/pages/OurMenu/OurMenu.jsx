@@ -15,37 +15,31 @@ const OurMenu = () => {
   // console.log(menu);
 
   // filtering specific category data from menu.json data
-  const offered = menu.filter(item =>item.category === "offered");
+  const offered = menu.filter((item) => item.category === "offered");
   // console.log(offered);
-  const salad = menu.filter(item =>item.category === "salad");
-  const dessert = menu.filter(item =>item.category === "dessert");
-  const pizza = menu.filter(item =>item.category === "pizza");
-  const soup = menu.filter(item =>item.category === "soup");
+  const salad = menu.filter((item) => item.category === "salad");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const soup = menu.filter((item) => item.category === "soup");
   return (
     <div className="py-20">
       <Helmet>
         <title>Bistro Boss | Menu</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
+      {/* main cover img */}
       <Cover img={menuImg} title={"Our Menu"} />
-      <SectionTitle heading="TODAY'S OFFER" subHeading="Don't miss"/>
-      <MenuCategory items={offered}/>
-      {/* for dessert */}
-      <Cover img={dessertImg} title={"Dessert"} />
-      <MenuCategory items={dessert}/>
-      {/* for pizza */}
-      <Cover img={pizzaImg} title={"Pizza"} />
-      <MenuCategory items={pizza}/>
-      {/* for salad */}
-      <Cover img={saladImg} title={"Salad"} />
-      <MenuCategory items={salad}/>
-      {/* for soup */}
-      <Cover img={soupImg} title={"Soup"} />
-      <MenuCategory items={soup}/>
-
-
-
- 
+      <SectionTitle heading="TODAY'S OFFER" subHeading="Don't miss" />
+      {/* today's offer items */}
+      <MenuCategory items={offered} />
+      {/* desert items */}
+      <MenuCategory items={dessert} coverImg={dessertImg} title={"Dessert"} />
+      {/* pizza items */}
+      <MenuCategory items={pizza} coverImg={pizzaImg} title={"Pizza"} />
+      {/* salad items */}
+      <MenuCategory items={salad} coverImg={saladImg} title={"Salad"} />
+      {/* soup items */}
+      <MenuCategory items={soup} coverImg={soupImg} title={"Soup"} />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import { Parallax, Background } from "react-parallax";
+import { Parallax } from "react-parallax";
 
 const Cover = ({ img, title }) => {
   return (
     <Parallax
-      blur={{ min: -30, max: 15 }}
+      blur={{ min: -15, max: 15 }}
       bgImage={img}
       bgImageAlt="the img"
       strength={-200}
