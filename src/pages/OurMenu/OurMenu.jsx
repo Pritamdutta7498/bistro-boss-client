@@ -14,11 +14,11 @@ const OurMenu = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <Cover img={menuImg} title={"Our Menu"} />
-      {/* for test we use the popular menu section*/}
+      {/* for test we use the popular menu section
       <PopularMenu />
       <Cover img={dessertImg} title={"Our Menu Dessert"} />
       <PopularMenu />
-      <Cover img={saladImg} title={"Our Menu salad"} />
+      <Cover img={saladImg} title={"Our Menu salad"} /> */}
     </div>
   );
 };
