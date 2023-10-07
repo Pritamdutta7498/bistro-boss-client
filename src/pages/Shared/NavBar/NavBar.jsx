@@ -8,17 +8,12 @@ const NavBar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/">Contact Us</Link>
-      </li>
-      <li>
-        <Link to="/">Dashboard</Link>
-      </li>
+
       <li>
         <Link to="/menu">Our Menu</Link>
       </li>
       <li>
-        <Link to="/">Our Shop</Link>
+        <Link to="/order">Order</Link>
       </li>
     </>
   );
