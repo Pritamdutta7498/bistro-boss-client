@@ -4,9 +4,19 @@ import orderImg from "../../../assets/shop/banner2.jpg";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./Order.css";
+import useMenu from "../../../hooks/useMenu";
 
 const Order = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [menu] = useMenu();
+  // console.log(menu);
+  const offered = menu.filter((item) => item.category === "offered");
+  // console.log(offered);
+  const salad = menu.filter((item) => item.category === "salad");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const soup = menu.filter((item) => item.category === "soup");
+
   return (
     <div className="py-20">
       <Cover img={orderImg} title={"Order Food"} />
