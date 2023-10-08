@@ -10,9 +10,11 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useMenu from "../../hooks/useMenu";
 import MenuCategory from "./MenuCategory";
 
+
 const OurMenu = () => {
   const [menu] = useMenu();
   // console.log(menu);
+
 
   // filtering specific category data from menu.json data
   const offered = menu.filter((item) => item.category === "offered");
@@ -33,13 +35,13 @@ const OurMenu = () => {
       {/* today's offer items */}
       <MenuCategory items={offered} />
       {/* desert items */}
-      <MenuCategory items={dessert} coverImg={dessertImg} title={"Dessert"} />
+      <MenuCategory items={dessert} coverImg={dessertImg} title={"dessert"} />
       {/* pizza items */}
-      <MenuCategory items={pizza} coverImg={pizzaImg} title={"Pizza"} />
+      <MenuCategory items={pizza} coverImg={pizzaImg} title={"pizza"} />
       {/* salad items */}
-      <MenuCategory items={salad} coverImg={saladImg} title={"Salad"} />
+      <MenuCategory items={salad} coverImg={saladImg} title={"salad"} />
       {/* soup items */}
-      <MenuCategory items={soup} coverImg={soupImg} title={"Soup"} />
+      <MenuCategory items={soup} coverImg={soupImg} title={"soup"} />
     </div>
   );
 };

@@ -9,11 +9,19 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "menu", element:<OurMenu/> },
-      { path: "order", element:<Order/> },
-
-  ],
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "menu",
+        element: <OurMenu />,
+      },
+      {
+        path: "order/:category",
+        element: <Order />,
+      },
+    ],
   },
 ]);
 

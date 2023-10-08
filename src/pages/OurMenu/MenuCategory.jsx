@@ -1,6 +1,7 @@
 import React from "react";
 import MenuItem from "../Shared/MenuItem/MenuItem";
 import Cover from "../Shared/Cover/Cover";
+import { Link } from "react-router-dom";
 
 const MenuCategory = ({ items, coverImg, title }) => {
   return (
@@ -13,11 +14,12 @@ const MenuCategory = ({ items, coverImg, title }) => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <div className="flex justify-center ">
+        <Link to={`/order/${title}`} className="flex justify-center ">
         <button className="btn border-b-4 border-x-2 p-3 rounded-md shadow-md uppercase my-5 w-2/5">
           View full menu
         </button>
-      </div>
+        </Link>
+        
     </div>
   );
 };
