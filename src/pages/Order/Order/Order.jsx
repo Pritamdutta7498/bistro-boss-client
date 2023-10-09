@@ -30,7 +30,7 @@ const Order = () => {
   return (
     <div className="py-20">
        <Helmet>
-        <title>Bistro Boss | Order</title>
+        <title>Bistro Boss | Order Food</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <Cover img={orderImg} title={"Order Food"} />
