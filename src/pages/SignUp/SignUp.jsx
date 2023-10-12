@@ -16,7 +16,7 @@ const SignUp = () => {
 
   const {createUser} = useContext(AuthContext);
   const onSubmit = (data) =>{
-    console.log(data)
+    // console.log(data)
     createUser(data.email, data.password)
     .then(result =>{
       const loggedUser = result.user;
