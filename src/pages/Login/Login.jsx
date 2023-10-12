@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -12,6 +12,10 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const Login = () => {
   const [disable, setDisable] = useState(true);
+  // navigate the routes under private with location
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { signIn } = useContext(AuthContext);
 
@@ -31,7 +35,7 @@ const Login = () => {
       const user = result.user;
       // console.log(user);
       Swal.fire("Success!", "User Login successfully!", "success");
-      
+      navigate(from, { replace: true });
     });
   };
 
