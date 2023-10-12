@@ -1,8 +1,12 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
-  
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   const navLink = (
     <>
       <li>
@@ -15,9 +19,16 @@ const NavBar = () => {
       <li>
         <Link to="/order/salad">Order</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+
+      {user ? (
+        <>
+          <button className="btn btn-warning">LogOut</button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+        </>
+      )}
     </>
   );
   return (
@@ -57,9 +68,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLink}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Button</a>

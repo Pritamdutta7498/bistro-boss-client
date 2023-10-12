@@ -13,8 +13,17 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const {} = useContext(AuthContext);
+
+  const {createUser} = useContext(AuthContext);
+  const onSubmit = (data) =>{
+    console.log(data)
+    createUser(data.email, data.password)
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+  };
+
 
   return (
     <>
@@ -47,6 +56,17 @@ const SignUp = () => {
                   <p className="text-red-600">*Name is required!</p>
                 )}
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">PhotUrl</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("photoUrl")}
+                  placeholder="photoUrl"
+                  className="input input-bordered"
+                />
+              </div>
 
               <div className="form-control">
                 <label className="label">
@@ -54,12 +74,18 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  {...register("email", { required: true })}
+                  {...register("email", { required: true, pattern: /^\S+@\S+\.\S+$/,})}
                   placeholder="email"
+                  required
                   className="input input-bordered"
                 />
                 {errors?.email?.type === "required" && (
                   <p className="text-red-600">*Email is required!</p>
+                )}
+                {errors?.email?.type === "pattern" && (
+                  <p className="text-red-600">
+                    Please use @ and your type of mail!
+                  </p>
                 )}
               </div>
               <div className="form-control">
