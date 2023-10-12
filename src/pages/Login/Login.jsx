@@ -31,6 +31,7 @@ const Login = () => {
       const user = result.user;
       // console.log(user);
       Swal.fire("Success!", "User Login successfully!", "success");
+      
     });
   };
 
@@ -39,7 +40,7 @@ const Login = () => {
     const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value) == true) {
-      alert('Captcha Matched');
+      // alert('Captcha Matched');
       setDisable(false);
     } else {
       setDisable(true);
