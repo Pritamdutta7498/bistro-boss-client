@@ -1,26 +1,46 @@
 import React, { useContext } from "react";
 import loginBg from "../../assets/others/authentication.png";
 import loginImg from "../../assets/others/authentication2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useContext(AuthContext);
+  const {createUser, updateUserProfile} = useContext(AuthContext);
   const onSubmit = (data) =>{
-    // console.log(data)
+    console.log(data)
     createUser(data.email, data.password)
     .then(result =>{
       const loggedUser = result.user;
-      console.log(loggedUser);
+      // console.log(loggedUser);
+      // update profile 
+      updateUserProfile(data.name, data.photoUrl)
+      .then(()=>{
+        // reset the form
+        reset();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User created successfully!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        navigate('/');
+
+
+      })
+      .catch(error => console.log(error))
     })
   };
 
@@ -63,7 +83,8 @@ const SignUp = () => {
                 <input
                   type="text"
                   {...register("photoUrl")}
-                  placeholder="photoUrl"
+                  title ="you can upload your img in imgbb website and create a img link"
+                  placeholder="PhotoUrl "
                   className="input input-bordered"
                 />
               </div>

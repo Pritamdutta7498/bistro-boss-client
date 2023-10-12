@@ -6,12 +6,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then(() =>{})
-    .catch(error => console.log(error))
-
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   console.log(user);
 
@@ -33,7 +32,9 @@ const NavBar = () => {
 
       {user ? (
         <li>
-          <button onClick={handleLogOut} className="btn btn-warning">LogOut</button>
+          <button onClick={handleLogOut} className="btn btn-warning">
+            LogOut
+          </button>
         </li>
       ) : (
         <li>
@@ -81,9 +82,28 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLink}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+      {/* user profile setup */}
+      {user ? (
+        <div className="navbar-end">
+          <div className="avatar">
+            <div className="w-12 rounded-full ring ring-gray-800 ring-offset-base-100 ring-offset-2">
+              <img src={user?.photoURL} title={`${user?.displayName}`} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="navbar-end">
+          <div className="avatar">
+            <div className="w-12 rounded-full ring ring-gray-800 ring-offset-base-100 ring-offset-2">
+              <img
+                src="https://i.ibb.co/3C2Qg3C/avater.jpg"
+                title={`${user?.displayName}`}
+                alt="userName"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
