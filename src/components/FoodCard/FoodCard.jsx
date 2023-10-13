@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const FoodCard = ({ item }) => {
-  const { name, recipe, image, price } = item;
+  const { name, recipe, image, price, _id } = item;
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -13,8 +13,22 @@ const FoodCard = ({ item }) => {
   const handleAddToCart = (item) => {
     // console.log(item);
     // console.log(user);
-    if (user) {
-      fetch("http://localhost:5000")
+    if (user && user.email) {
+      const cartItem = {
+        menuItemId: _id,
+        name,
+        recipe,
+        image,
+        price,
+        email: user.email,
+      };
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -38,7 +52,7 @@ const FoodCard = ({ item }) => {
         confirmButtonText: "Login Now!",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login",{ state: {from:location}});
+          navigate("/login", { state: { from: location } });
         }
       });
     }
