@@ -32,7 +32,7 @@ const Order = () => {
        <Helmet>
         <title>Bistro Boss | Order Food</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
-      </Helmet>
+    </Helmet>
       <Cover img={orderImg} title={"Order Food"} />
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>

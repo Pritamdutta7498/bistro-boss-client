@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BsCart4 } from "react-icons/bs";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
@@ -28,6 +29,14 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/secret">secret</Link>
+      </li>
+      <li>
+        <Link to="/">
+          <div className=" p-0 hover:bg-none mb-5 flex flex-row gap-3 justify-center items-center">
+            <BsCart4 className="text-2xl text-white "/>
+            <div className="badge badge-secondary">+0</div>
+          </div>
+        </Link>
       </li>
 
       {user ? (

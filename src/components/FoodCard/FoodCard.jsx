@@ -2,6 +2,7 @@ import React from "react";
 
 const FoodCard = ({ item }) => {
   const { name, recipe, image, price } = item;
+  
 
   return (
     <div className="card w-96 h-[600px] bg-base-100 shadow-xl">
