@@ -97,7 +97,7 @@ const NavBar = () => {
             <div className="w-12 rounded-full ring ring-gray-800 ring-offset-base-100 ring-offset-2">
               <img
                 src="https://i.ibb.co/3C2Qg3C/avater.jpg"
-                title={`${user?.displayName}`}
+                title="Please Login"
                 alt="userName"
               />
             </div>

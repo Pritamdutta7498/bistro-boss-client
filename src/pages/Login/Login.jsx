@@ -36,6 +36,8 @@ const Login = () => {
       // console.log(user);
       Swal.fire("Success!", "User Login successfully!", "success");
       navigate(from, { replace: true });
+      form.reset();
+      
     });
   };
 
