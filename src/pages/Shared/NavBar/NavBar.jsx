@@ -34,7 +34,7 @@ const NavBar = () => {
         <Link to="/secret">secret</Link>
       </li>
       <li>
-        <Link to="/">
+        <Link to="dashboard/myCart">
           <div className=" p-0 hover:bg-none mb-5 flex flex-row gap-3 justify-center items-center">
             <BsCart4 className="text-2xl text-white "/>
             <div className="badge badge-secondary"> + {cart?.length || 0}</div>
