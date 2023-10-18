@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import {
   FaBars,
   FaCcAmazonPay,
@@ -30,7 +30,7 @@ const DashBoard = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side bg-amber-200">
+      <div className="drawer-side bg-[#D1A054]">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
@@ -41,44 +41,44 @@ const DashBoard = () => {
           <p className="font-semibold text-2xl tracking-widest">Restaurant</p>
         </div>
 
-        <ul className="menu  p-4 w-80 min-h-full text-base-content">
+        <ul className="menu  p-4 w-80 min-h-full">
           {/* Sidebar content here */}
 
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/dashboard/home" className="text-xl font-semibold">
               {" "}
               <FaHome className="text-2xl" /> User Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/dashboard/reserve" className="text-xl font-semibold">
               {" "}
               <BsFillCalendar2WeekFill className="text-2xl" /> reservation
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/dashboard/paymentHistory" className="text-xl font-semibold">
               {" "}
               <FaCcAmazonPay className="text-2xl" /> Payment History
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/dashboard/myCart" className="text-xl font-semibold">
+            <NavLink to="/dashboard/myCart" className="text-xl font-semibold">
               {" "}
               <FaShoppingCart className="text-2xl" /> My Cart
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/dashboard/addReview" className="text-xl font-semibold">
               {" "}
               <BsStars className="text-2xl" /> Add Review
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/dashboard/myBooking" className="text-xl font-semibold">
               {" "}
               <BsFillCalendarCheckFill className="text-2xl" /> My Booking
-            </Link>
+            </NavLink>
           </li>
 
           {/* divider */}
@@ -86,24 +86,24 @@ const DashBoard = () => {
         <hr className=" bg-slate-300 p-[0.05rem] my-5"  />
 
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/" className="text-xl font-semibold">
               <FaHome className="text-xl font-semibold" /> HOME
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/" className="text-xl font-semibold">
               <FaBars className="text-xl font-semibold" /> MENU
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/" className="text-xl font-semibold">
               <FaShoppingBag className="text-xl font-semibold" /> SHOP
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="text-xl font-semibold">
+            <NavLink to="/" className="text-xl font-semibold">
               <FaPhoneSquareAlt className="text-xl font-semibold" /> CONTACT
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
