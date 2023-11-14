@@ -3,13 +3,49 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../hooks/useCart";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { AiOutlineDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   console.log(cart[0]);
   // console.log(cart[1].price);
   const totalPrice = cart.reduce((sum, item) => item.price + sum, 0);
   // console.log(totalPrice);
+
+  // handle delete item from cart
+  const handleDelete = (item) => {
+    console.log(item);
+    // 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This item has been deleted form cart!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if(result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.deletedCount > 0){
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        })
+
+      }
+      }
+    );
+  }
   return (
     <>
       <Helmet>
@@ -59,7 +95,7 @@ const MyCart = () => {
                 <td>{item.name}</td>
                 <td> ${item.price}</td>
                 <td>
-                  <button className="btn btn-ghost hover:bg-red-400 hover:text-white">
+                  <button onClick={()=> handleDelete(item)} className="btn btn-ghost hover:bg-red-400 hover:text-white">
                     <AiOutlineDelete className="text-2xl cursor-pointer " />
                   </button>
                 </td>
