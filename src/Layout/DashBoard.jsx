@@ -13,8 +13,11 @@ import {
   BsFillCalendarCheckFill,
   BsStars,
 } from "react-icons/bs";
+import useCart from "../hooks/useCart";
 
 const DashBoard = () => {
+  const [cart] = useCart();
+
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -23,7 +26,7 @@ const DashBoard = () => {
 
       <div className="drawer-content bg-[#F6F6F6]">
         {/* Page content here */}
-    
+
         <Outlet />
 
         <label
@@ -60,25 +63,39 @@ const DashBoard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/paymentHistory" className="text-xl font-semibold">
+            <NavLink
+              to="/dashboard/paymentHistory"
+              className="text-xl font-semibold"
+            >
               {" "}
               <FaCcAmazonPay className="text-2xl" /> Payment History
             </NavLink>
           </li>
-          <li>
+          <li >
+            
             <NavLink to="/dashboard/myCart" className="text-xl font-semibold">
               {" "}
               <FaShoppingCart className="text-2xl" /> My Cart
+              <span className="badge badge-ghost"> + {cart?.length || 0}</span>
+
             </NavLink>
+
+            
           </li>
           <li>
-            <NavLink to="/dashboard/addReview" className="text-xl font-semibold">
+            <NavLink
+              to="/dashboard/addReview"
+              className="text-xl font-semibold"
+            >
               {" "}
               <BsStars className="text-2xl" /> Add Review
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/myBooking" className="text-xl font-semibold">
+            <NavLink
+              to="/dashboard/myBooking"
+              className="text-xl font-semibold"
+            >
               {" "}
               <BsFillCalendarCheckFill className="text-2xl" /> My Booking
             </NavLink>
@@ -86,7 +103,7 @@ const DashBoard = () => {
 
           {/* divider */}
 
-        <hr className=" bg-slate-300 p-[0.05rem] my-5"  />
+          <hr className=" bg-slate-300 p-[0.05rem] my-5" />
 
           <li>
             <NavLink to="/" className="text-xl font-semibold">
