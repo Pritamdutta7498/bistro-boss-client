@@ -9,7 +9,6 @@ import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,37 +16,46 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const {createUser, updateUserProfile} = useContext(AuthContext);
-  const onSubmit = (data) =>{
-    console.log(data)
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    console.log(data);
     createUser(data.email, data.password)
-    .then(result =>{
+    .then((result) => {
       const loggedUser = result.user;
-      // console.log(loggedUser);
-      // update profile 
+      console.log(loggedUser);
+      // update profile
       updateUserProfile(data.name, data.photoUrl)
-      .then(()=>{
-        // reset the form
-        reset();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'User created successfully!',
-          showConfirmButton: false,
-          timer: 1500
+        .then(() => {
+          const saveUser = {name: data.name, email: data.email}
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: { 'content-Type': 'application/json' },
+            body: JSON.stringify(saveUser),
+          })
+            .then(res => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created successfully!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
         })
-        navigate('/');
-
-
-      })
-      .catch(error => console.log(error))
-    })
+        .catch((error) => console.log(error));
+    });
   };
-
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Bistro Boss | Sign Up</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
@@ -83,7 +91,7 @@ const SignUp = () => {
                 <input
                   type="text"
                   {...register("photoUrl")}
-                  title ="you can upload your img in imgbb website and create a img link"
+                  title="you can upload your img in imgbb website and create a img link"
                   placeholder="PhotoUrl "
                   className="input input-bordered"
                 />
@@ -95,7 +103,10 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  {...register("email", { required: true, pattern: /^\S+@\S+\.\S+$/,})}
+                  {...register("email", {
+                    required: true,
+                    pattern: /^\S+@\S+\.\S+$/,
+                  })}
                   placeholder="email"
                   required
                   className="input input-bordered"

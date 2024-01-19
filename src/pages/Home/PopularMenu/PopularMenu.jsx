@@ -10,7 +10,7 @@ const PopularMenu = () => {
   return (
     <section className="my-10">
       <SectionTitle
-        subHeading={"---Check it out---"}
+        subHeading={"---Popular menu---"}
         heading={"FROM OUR MENU"}
       />
       <div className="grid md:grid-cols-2 gap-10">

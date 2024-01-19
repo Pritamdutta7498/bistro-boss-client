@@ -17,7 +17,7 @@ const Cover = ({ img, title }) => {
               {title}
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+             cover Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Expedita, mollitia velit veniam facere quisquam accusantium vero,
               explicabo consectetur aliquam molestias voluptatum laudantium,
               saepe accusamus quod sunt veritatis ad culpa iusto.

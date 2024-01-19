@@ -95,7 +95,7 @@ const MyCart = () => {
                 <td>{item.name}</td>
                 <td> ${item.price}</td>
                 <td>
-                  <button onClick={()=> handleDelete(item)} className="btn btn-ghost hover:bg-red-400 hover:text-white">
+                  <button onClick={()=> handleDelete(item)} className="btn btn-ghost bg-red-300 hover:bg-red-500 hover:text-white">
                     <AiOutlineDelete className="text-2xl cursor-pointer " />
                   </button>
                 </td>
