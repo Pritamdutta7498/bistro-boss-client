@@ -10,6 +10,7 @@ import {
 import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const Login = () => {
   const [disable, setDisable] = useState(true);
   // navigate the routes under private with location
@@ -133,6 +134,9 @@ const Login = () => {
                   Create a New Account
                 </Link>
               </p>
+              {/* social login component */}
+              <SocialLogin></SocialLogin>
+              
             </form>
           </div>
         </div>
