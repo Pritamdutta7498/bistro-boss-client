@@ -3,6 +3,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdAdminPanelSettings } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -11,6 +12,26 @@ const AllUsers = () => {
     return res.json();
   });
 
+  // make admin to any specific user with this btn
+  const handleMakeAdmin = (user) => {
+    // console.log(user)
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is now admin`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   const handleDelete = (user) => {};
 
   return (
@@ -19,7 +40,10 @@ const AllUsers = () => {
         <title>Bistro Boss || All User</title>
       </Helmet>
       <div className="overflow-x-auto w-full">
-        <h2 className="text-3xl text-center w-4/12 mx-auto shadow-xl p-5 my-4 uppercase">Total Users: <span className="text-zinc-600 font-bold">{users.length}</span> </h2>
+        <h2 className="text-3xl text-center w-4/12 mx-auto shadow-xl p-5 my-4 uppercase">
+          Total Users:{" "}
+          <span className="text-zinc-600 font-bold">{users.length}</span>{" "}
+        </h2>
         <table className="table table-zebra ">
           {/* head */}
           <thead>
@@ -37,16 +61,20 @@ const AllUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>
-                  {
-                    users.role === 'admin' ? 'admin' : <button
-                    onClick={() => handleDelete(user)}
-                    className="btn btn-ghost bg-blue-300 hover:bg-green-400 hover:text-white"
-                  >
-                    <MdAdminPanelSettings  className="text-xl cursor-pointer " />
-                  </button>
-                  }
+
+                <td className="font-bold ">
+                  {user.role === "admin" ? (
+                    "ADMIN"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="btn btn-ghost bg-blue-300 hover:bg-green-400 hover:text-white"
+                    >
+                      <MdAdminPanelSettings className="text-xl cursor-pointer " />
+                    </button>
+                  )}
                 </td>
+
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
