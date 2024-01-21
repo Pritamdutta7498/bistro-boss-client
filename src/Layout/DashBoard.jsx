@@ -2,21 +2,28 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import {
   FaBars,
+  FaBook,
   FaCcAmazonPay,
   FaHome,
   FaPhoneSquareAlt,
   FaShoppingBag,
   FaShoppingCart,
+  FaUsers,
 } from "react-icons/fa";
 import {
   BsFillCalendar2WeekFill,
   BsFillCalendarCheckFill,
   BsStars,
 } from "react-icons/bs";
+import { ImSpoonKnife } from "react-icons/im";
+
 import useCart from "../hooks/useCart";
 
 const DashBoard = () => {
   const [cart] = useCart();
+
+  // TODO: admin maintain
+  const isAdmin = true;
 
   return (
     <div className="drawer lg:drawer-open ">
@@ -48,58 +55,114 @@ const DashBoard = () => {
         </div>
 
         <ul className="menu  p-4 w-80 min-h-full">
-          {/* Sidebar content here */}
+          {/* dynamic change for normal user and admin */}
 
-          <li>
-            <NavLink to="/dashboard/home" className="text-xl font-semibold">
-              {" "}
-              <FaHome className="text-2xl" /> User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reserve" className="text-xl font-semibold">
-              {" "}
-              <BsFillCalendar2WeekFill className="text-2xl" /> reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/paymentHistory"
-              className="text-xl font-semibold"
-            >
-              {" "}
-              <FaCcAmazonPay className="text-2xl" /> Payment History
-            </NavLink>
-          </li>
-          <li >
-            
-            <NavLink to="/dashboard/myCart" className="text-xl font-semibold">
-              {" "}
-              <FaShoppingCart className="text-2xl" /> My Cart
-              <span className="badge badge-ghost"> + {cart?.length || 0}</span>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/home" className="text-xl font-semibold">
+                  {" "}
+                  <FaHome className="text-2xl" /> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/reserve"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <ImSpoonKnife className="text-2xl" /> Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <FaBars className="text-2xl" /> Manage Items
+                </NavLink>
+              </li>
 
-            </NavLink>
-
-            
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/addReview"
-              className="text-xl font-semibold"
-            >
-              {" "}
-              <BsStars className="text-2xl" /> Add Review
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/myBooking"
-              className="text-xl font-semibold"
-            >
-              {" "}
-              <BsFillCalendarCheckFill className="text-2xl" /> My Booking
-            </NavLink>
-          </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addReview"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <FaBook className="text-2xl" /> Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/allusers"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <FaUsers className="text-2xl" />
+                  All Users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/dashboard/home" className="text-xl font-semibold">
+                  {" "}
+                  <FaHome className="text-2xl" /> User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/reserve"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <BsFillCalendar2WeekFill className="text-2xl" /> reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <FaCcAmazonPay className="text-2xl" /> Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/myCart"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <FaShoppingCart className="text-2xl" /> My Cart
+                  <span className="badge badge-ghost">
+                    {" "}
+                    + {cart?.length || 0}
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addReview"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <BsStars className="text-2xl" /> Add Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/myBooking"
+                  className="text-xl font-semibold"
+                >
+                  {" "}
+                  <BsFillCalendarCheckFill className="text-2xl" /> My Booking
+                </NavLink>
+              </li>
+            </>
+          )}
 
           {/* divider */}
 

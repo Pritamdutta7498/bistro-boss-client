@@ -33,7 +33,7 @@ const SignUp = () => {
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: { 'content-Type': 'application/json' },
-            body: JSON.stringify(saveUser),
+            body: JSON.stringify(saveUser)
           })
             .then(res => res.json())
             .then((data) => {

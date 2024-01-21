@@ -11,18 +11,22 @@ const SocialLogin = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
-    googleSignIn().then((result) => {
+    googleSignIn()
+    .then((result) => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
 
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
-      };
+      }
+      
+      console.log(saveUser);
       fetch("http://localhost:5000/users", {
         method: "POST",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(saveUser),
+      
       })
         .then((res) => res.json())
         .then(() => {
