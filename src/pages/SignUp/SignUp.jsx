@@ -7,6 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const {
@@ -167,6 +168,9 @@ const SignUp = () => {
                 </Link>
               </p>
             </form>
+            {/* using the social login compo */}
+            <SocialLogin></SocialLogin>
+
           </div>
           <div>
             <img src={loginImg} alt="loginImg" />
