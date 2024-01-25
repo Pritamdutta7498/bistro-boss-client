@@ -18,12 +18,14 @@ import {
 import { ImSpoonKnife } from "react-icons/im";
 
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
   const [cart] = useCart();
 
   // TODO: admin maintain
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="drawer lg:drawer-open ">
