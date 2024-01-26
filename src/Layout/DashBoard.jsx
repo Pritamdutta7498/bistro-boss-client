@@ -69,11 +69,11 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/reserve"
+                  to="/dashboard/addItem"
                   className="text-xl font-semibold"
                 >
                   {" "}
-                  <ImSpoonKnife className="text-2xl" /> Add Items
+                  <ImSpoonKnife className="text-2xl" /> Add an Item
                 </NavLink>
               </li>
               <li>

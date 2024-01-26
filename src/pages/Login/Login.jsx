@@ -45,7 +45,7 @@ const Login = () => {
   // captcha validation
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
-    console.log(user_captcha_value);
+    // console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value) == true) {
       // alert('Captcha Matched');
       setDisable(false);
@@ -109,6 +109,8 @@ const Login = () => {
                   onBlur={handleValidateCaptcha}
                   type="text"
                   name="captcha"
+                 
+                  
                   placeholder="type here"
                   className="input input-bordered"
                   required
