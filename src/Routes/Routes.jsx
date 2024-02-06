@@ -67,11 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: "addItem",
-        element: (
-         <AdminRoute> <AddItem></AddItem></AdminRoute>
-           
-         
-        ),
+        element: <AdminRoute> <AddItem></AddItem> </AdminRoute> ,
       },
     ],
   },
