@@ -15,7 +15,7 @@ const MyCart = () => {
   // handle delete item from cart
   const handleDelete = (item) => {
     // console.log(item);
-    // 
+    //
     Swal.fire({
       title: "Are you sure?",
       text: "This item has been deleted form cart!",
@@ -23,29 +23,26 @@ const MyCart = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if(result.isConfirmed) {
+      if (result.isConfirmed) {
         fetch(`http://localhost:5000/carts/${item._id}`, {
           method: "DELETE",
-
         })
-        .then(res => res.json())
-        .then(data => {
-          if(data.deletedCount > 0){
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success"
-            });
-          }
-        })
-
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
       }
-      }
-    );
-  }
+    });
+  };
   return (
     <>
       <Helmet>
@@ -95,7 +92,10 @@ const MyCart = () => {
                 <td>{item.name}</td>
                 <td> ${item.price}</td>
                 <td>
-                  <button onClick={()=> handleDelete(item)} className="btn btn-ghost bg-red-300 hover:bg-red-500 hover:text-white">
+                  <button
+                    onClick={() => handleDelete(item)}
+                    className="btn btn-ghost bg-red-300 hover:bg-red-500 hover:text-white"
+                  >
                     <AiOutlineDelete className="text-2xl cursor-pointer " />
                   </button>
                 </td>
