@@ -78,7 +78,7 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/paymentHistory"
+                  to="/dashboard/manageItems"
                   className="text-xl font-semibold"
                 >
                   {" "}
